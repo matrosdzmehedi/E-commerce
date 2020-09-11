@@ -32,7 +32,7 @@ coverage.xml
 # Django stuff:
 *.log
 *.lock
-mysite/settings/local.py
+
 
 # pyenv
 .python-version
