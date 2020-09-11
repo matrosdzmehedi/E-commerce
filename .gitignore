@@ -1,0 +1,69 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Distribution / packaging
+.Python
+env/
+
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+*.lock
+
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+.vscode
+
+# mypy
+.mypy_cache/
+
+.DS_Store
+*.sqlite3
+*.pyc
+*.db
+*.pid
+
+# Ignore Django Migrations in Development if you are working on team
+
+# Only for Development only
+# **/migrations/**
+# !**/migrations
+# !**/migrations/__init__.py
