@@ -1,6 +1,20 @@
-import os
+from os.path import abspath, dirname, join
 
 from pathlib import Path
+
+
+def root(*dirs):
+    base_dir = join(dirname(__file__), '..', '..')
+    return abspath(join(base_dir, *dirs))
+
+
+BASE_DIR = root()
+MEDIA_ROOT = root('media')
+STATICFILES_DIRS = [root('static')]
+
+
+
+
 
 
 DEBUG = True
@@ -13,7 +27,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'z_k+_xob^(#s2ygb94gi@=6ba6r4-!0b@l1@$n0*7^(qi1n#k!'
 
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -21,14 +34,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    #use for allauth
+    'crispy_forms',
+    # use for allauth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
+
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -41,6 +67,26 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 WSGI_APPLICATION = 'mysite.wsgi.application'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [root('templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -59,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Dhaka'
@@ -71,3 +116,6 @@ USE_L10N = True
 USE_TZ = True
 
 
+# static section
+
+STATIC_URL = '/static/'
