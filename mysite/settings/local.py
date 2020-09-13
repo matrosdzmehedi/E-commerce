@@ -4,7 +4,7 @@ from .base import *
 # [ python manage.py runserver --settings=mysite.settings.local ]
 
 
-INSTALLED_APPS += ['customer.apps.CustomerConfig', ]
+INSTALLED_APPS += ['customer.apps.CustomerConfig', 'seller.apps.SellerConfig', ]
 
 
 DATABASES = {

@@ -10,7 +10,9 @@ def root(*dirs):
 
 BASE_DIR = root()
 MEDIA_ROOT = root('media')
+MEDIA_URL ='/media/'
 STATICFILES_DIRS = [root('static')]
+STATIC_URL = '/static/'
 
 
 
@@ -116,6 +118,3 @@ USE_L10N = True
 USE_TZ = True
 
 
-# static section
-
-STATIC_URL = '/static/'

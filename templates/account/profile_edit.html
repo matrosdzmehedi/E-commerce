@@ -1,0 +1,26 @@
+{% extends "account/base.html" %} {% load crispy_forms_tags %} 
+{% block content%} 
+{% if user.is_authenticated %}
+<div class="container col-md-6">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bootom mb-4">Profile info</legend>
+      <p><strong>Current username: {{user.username}}</strong></p>
+      {{ update|crispy }} {{ profileup|crispy }}
+     
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-sm btn-info">update</button>
+    </div>
+  </form>
+</div>
+
+{% else %}
+<p>
+  Already have an account? Then please
+  <a href="{% url 'account_login' %}">Log in</a>.
+</p>
+{% endif %}
+
+ {% endblock %}

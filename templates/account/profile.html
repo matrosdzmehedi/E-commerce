@@ -1,0 +1,41 @@
+{% extends "account/base.html" %} {% load crispy_forms_tags %}
+ {% block content %}
+  {% if user.is_authenticated %}
+<div class="container">
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{ user.userprofile.image.url }}"class="card-img" alt="not-found">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <span>Username</span>
+          <h5 class="card-title">{{user.username}}</h5>
+          <span>Email</span>
+          <p class="card-text"><small class="text">{{user.email}}</small></p>
+          <p>  
+            <form method="POST" action="{% url 'profile-edit' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+             
+                {{ update|crispy }} {{ profileup|crispy }}
+               
+                <button class="btn btn-sm btn-info"> update</button>
+            
+            </form>
+          </div></p>
+          <p> <a href="{% url 'account_change_password' %}"">  Change your Password </a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+
+{% else %}
+<p>
+  Already have an account? Then please
+  <a href="{% url 'account_login' %}">Log in</a>.
+</p>
+{% endif %}
+{% endblock %}

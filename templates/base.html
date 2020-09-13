@@ -15,7 +15,7 @@
   </head>
   <body >
     {% block body %} 
-     
+   
         <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
           <div class="container">
             <a class="navbar-brand" href="#">Entreprnuers-Hub</a>
@@ -53,8 +53,20 @@
             </div>
           </div>
         </nav>
+        {% if messages %}
+        <div>
+          <strong>Messages:</strong>
+          <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
   <div style="margin: 10px;">
+
     {% block content %}
+  
     {% endblock %}
     {% endblock %}
     {% block extra_body %}
