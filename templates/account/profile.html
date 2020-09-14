@@ -13,19 +13,33 @@
           <h5 class="card-title">{{user.username}}</h5>
           <span>Email</span>
           <p class="card-text"><small class="text">{{user.email}}</small></p>
-          <p>  
-            <form method="POST" action="{% url 'profile-edit' %}" enctype="multipart/form-data">
-              {% csrf_token %}
-             
-                {{ update|crispy }} {{ profileup|crispy }}
-               
-                <button class="btn btn-sm btn-info"> update</button>
-            
-            </form>
-          </div></p>
-          <p> <a href="{% url 'account_change_password' %}"">  Change your Password </a></p>
+          <p> <a href="{% url 'profile-edit' %}">  Update profile</a></p>
+          <p> <a href="{% url 'account_change_password' %}">  Change your Password </a></p>
+          <p><a href="{% url 'add-item' %}">Add Product</a></p>
         </div>
       </div>
+    </div>
+  </div>
+
+  
+
+
+    <div class="row">
+      {% for i in item %}
+      <div class="col-lg-3 m-4">
+        <img class="thumbnail" src="{{i.item_image.url}}" />
+        <div class="box-element product">
+          <h6><strong>{{i.item_name}}</strong></h6>
+          <small>{{i.status}}</small>
+          <hr />
+          <a class="btn btn-outline-success" href="#">View</a>
+          <h4 style="display: inline-block; float: right; ">
+            <strong>{{i.price}}</strong>
+          </h4>
+        </div>
+      </div>
+    
+      {% endfor %}
     </div>
   </div>
  

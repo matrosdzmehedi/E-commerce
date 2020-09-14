@@ -1,0 +1,20 @@
+{% extends "account/base.html" %} {% load crispy_forms_tags %} 
+{% block content%} 
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+
+<h1>Edit product</h1>
+<form action="" method="post">{% csrf_token %}
+{{ form|crispy }}
+<input type="submit" value="Update" class="btn btn-sm btn-info">
+</form>
+</div>
+
+</div>
+
+</div>
+
+{% endif %}
+{% endblock %}

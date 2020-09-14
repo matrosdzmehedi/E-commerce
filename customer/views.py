@@ -1,8 +1,14 @@
 from django.shortcuts import render
+from seller.models import Product
+from django.views.generic import TemplateView,ListView
 
-# Create your views here.
-from django.http import HttpResponse
+
+class Home(ListView):
+    model=Product
+    template_name='mainsite/home.html'
+    #paginate_by = 20
 
 
-def home(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    
+
+   
