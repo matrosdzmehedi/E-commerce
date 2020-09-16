@@ -74,3 +74,9 @@ class ItemDeleteView(DeleteView):
     model = Product
     template_name = 'mainsite/item_delete.html'
     success_url = reverse_lazy('profile')
+
+
+
+class ItemDetailUserView(DetailView):
+    model = Product
+    template_name = 'mainsite/item_detail_user.html'
