@@ -1,23 +1,23 @@
 {% extends "account/base.html" %} {% block content %}
 <div class="container">
-    <div class="row ">
-        {% for product in  object_list %}
-        <div class="col-lg-3 m-4 ">
-          <img class="thumbnail" src="{{product.item_image.url}}" height="250px" width="250px"/>
-          <div class="box-element ">
-            <h6><strong>{{product.item_name}}</a></strong></h6>
-            <small>{{product.status}}</small>
-            <hr />
-            <a class="btn btn-outline-success m-2" href="{% url 'item-detail' product.slug %}">View</a>
-            <h4 style="display: inline-block; float: right; ">
-              <strong>{{product.price}}</strong>
-            </h4>
-          </div>
-        </div>
-      
-        {% endfor %}
-      </div>
-</div>
+<div class="row">
+  {% for product in  object_list %}
+  <div class="col-lg-3 box-element">
+    <img class="thumbnail" src="{{product.item_image.url}}">
+    <div class=" product">
+      <h6><strong>{{product.item_name}}</strong></h6>
+      <small>{{product.status}}</small>
+      <hr>
 
+      <button class="btn btn-outline-secondary ">Add to Cart</button>
+      
+      <a class="btn btn-outline-success" href="{% url 'item-detail' product.slug %}">View</a>
+      <h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
   
 {% endblock %}

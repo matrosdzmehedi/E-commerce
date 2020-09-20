@@ -6,25 +6,25 @@
 <div class="container">
     <div class="row">
       
-        <div class="col-lg-3 m-4">
-          <img class="thumbnail" src="{{product.item_image.url}}" />
-          <div class="box-element product">
-            <h6><strong>{{product.item_name}}</strong></h6>
-            <small>{{product.status}}</small>
-            <hr />
-            <p>{{product.descrip}}</p>
-            <h4 style="display: inline-block; float: right; ">
-              <strong>{{product.price}}</strong>
-            </h4>
-          </div>
+      <div class="col-lg-3 box-element">
+        <img class="thumbnail" src="{{product.item_image.url}}">
+        <div class=" product">
+          <h6><strong>{{product.item_name}}</strong></h6>
+          <small>{{product.status}}</small>
+          <hr>
+  
+          
+          <a class="btn btn-outline-secondary" href="{% url 'item-edit' product.slug %}">Edit</a>
+          <a class="btn btn-outline-danger " href="{% url 'item-delete' product.slug %}"> Delete</a>
+          <h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
+    
         </div>
+      </div>
         <div class="col-lg-3 m-4">
       <p>Back to <a href="{% url 'profile' %}">profile</a></p>
       </div>
 
-      <p><a href="{% url 'item-edit' product.slug %}">Edit Product</a></p>
-      <hr>
-      <p><a href="{% url 'item-delete' product.slug %}">Delete Product</a></p>
+     
       </div>
 </div>
 {% endif %}
